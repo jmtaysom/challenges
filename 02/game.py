@@ -1,7 +1,8 @@
 #!python3
 # Code Challenge 02 - Word Values Part II - a simple game
 # http://pybit.es/codechallenge02.html
-
+from random import sample
+from collections import Counter
 from data import DICTIONARY, LETTER_SCORES, POUCH
 
 NUM_LETTERS = 7
@@ -18,9 +19,28 @@ def max_word_value(words):
     """Calc the max value of a collection of words"""
     return max(words, key=calc_word_value)
 
+def draw_letters(pouch=POUCH, n=7):
+    return sample(pouch,n)
+
+def check_word(hand,word):
+    hand_count = Counter(hand)
+    word_count = Counter(word.upper())
+    hand_count.subtract(word_count)
+    return all([False if value < 0 else True for value in hand_count.values()])
+
+def get_possible_dict_words():
+    pass
+
+def _get_permutations_draw():
+    pass
+
+def _validation(x,y):
+    pass
+
 
 def main():
-    pass
+    hand = draw_hand()
+    print(hand)
 
 
 if __name__ == "__main__":

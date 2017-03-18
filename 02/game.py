@@ -24,22 +24,13 @@ def draw_letters(pouch=POUCH, n=7):
 
 def check_word(hand,word):
     hand_count = Counter(hand)
-    word_count = Counter(word.upper())
+    word_count = Counter([letter for letter in word.upper()])
     hand_count.subtract(word_count)
-    return all([False if value < 0 else True for value in hand_count.values()])
-
-def get_possible_dict_words():
-    pass
-
-def _get_permutations_draw():
-    pass
-
-def _validation(x,y):
-    pass
+    return all([False if value < 0 else True for value in hand_count.values()]) and word.lower() in DICTIONARY
 
 
 def main():
-    hand = draw_hand()
+    hand = draw_letters()
     print(hand)
 
 

@@ -17,10 +17,13 @@ $ for i in ../*/*py; do grep ^import $i|sed 's/import //g' ; done | sort | uniq 
 import glob
 
 def gen_files(pat):
-    return glob.iglob(pat)
+    for file in glob.iglob(pat):
+        yield file
 
-def gen_lines(files):
-    pass
+def gen_lines(file):
+    with open(file, 'r') as f:
+        for line in f:
+            yield line
 
 def gen_grep(lines, pattern):
     pass
@@ -33,4 +36,5 @@ if __name__ == "__main__":
     # call the generators, passing one to the other
     files = gen_files('../*/*.py')
     lines = gen_lines(files)
-    # etc
+    for line in gen_lines('../10/movies.py'):
+        print(line)

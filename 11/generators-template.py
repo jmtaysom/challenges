@@ -14,9 +14,10 @@ $ for i in ../*/*py; do grep ^import $i|sed 's/import //g' ; done | sort | uniq 
    1 time
    1 datetime
 """
+import glob
 
 def gen_files(pat):
-    pass
+    return glob.iglob(pat)
 
 def gen_lines(files):
     pass

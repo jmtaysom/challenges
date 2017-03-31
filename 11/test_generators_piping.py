@@ -6,5 +6,5 @@ def test_gen_files():
     assert next(files) == '../01/data.py'
 
 def test_gen_lines():
-    lines = gen_lines('../10/movies.py')
+    lines = gen_lines(['../10/movies.py', '../10/movies.py'])
     assert next(lines) == 'import random\n'
